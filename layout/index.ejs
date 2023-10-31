@@ -1,0 +1,95 @@
+<div class="post-main">
+    <% var topListArr = []; var array = eval('site.posts.data'); %>
+    <% array.sort((a, b) => {
+        if (a.top === b.top) {
+            if (a.cover && !b.cover) {
+                return -1; // a.cover 为真而 b.cover 为假，a 排在 b 前面
+            } else if (!a.cover && b.cover) {
+                return 1; // a.cover 为假而 b.cover 为真，b 排在 a 前面
+            } else if (a.cover && b.cover) {
+                return b.date - a.date; // a.cover 和 b.cover 均为真，按日期倒序排序
+            }
+        }
+        return b.top - a.top; // 默认按照 top 属性进行排序
+    }); 
+    %>
+    <% for (let i = 0; i < array.length; i++) {
+        if((!('hide' in array[i]) || array[i].hide == false) && array[i].top){
+          topListArr.push(array[i]);
+        }
+    } %>
+
+    <%
+        var quantity = theme.banner.quantity || 0;
+        var postQuantity = theme.index.postQuantity || 5;
+        var bannerList = topListArr.slice(0, quantity);
+        var postsList = topListArr.slice(quantity, quantity + postQuantity);
+     %>
+
+    <% if(theme.banner.swiper && bannerList.length) { %>
+        <div class="swiper-box">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <% for(var i = 0; i < bannerList.length; i++) {  %>
+                        <div class="swiper-slide" data-title="<%= bannerList[i].title %>" data-path="<%- url_for(bannerList[i].path) %>">
+                            <a class="block" href="<%- url_for(bannerList[i].path) %>"><img class="h-full" alt="<%= bannerList[i].title %>" title="<%= bannerList[i].title %>" src="<%= bannerList[i].cover %>"></a>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="swiper-tools flex justify-between">
+                    <div id="swiper-title" class="swiper-title flex items-center"></div>
+                    <div class="swiper-pagination swiper-pagination-white flex items-center"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                autoplay: {
+                    delay: <%= theme.banner.delay %>,
+                    disableOnInteraction: false,
+                },
+                speed:500,
+                spaceBetween: 30,
+                effect: 'fade',
+                loop:true,//必须
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                on: {
+                    slideChange: function () {
+                        var activeSlide = this.slides[this.activeIndex];
+                        var path = activeSlide.getAttribute('data-path');
+                        var title = activeSlide.getAttribute('data-title');
+                        document.getElementById('swiper-title').innerHTML = '<a class="" href="'+path+'">'+title+'</a>';
+                    }
+                }
+            });
+            //鼠标滑过pagination控制swiper切换
+            for(i=0;i<swiper.pagination.bullets.length;i++){
+                swiper.pagination.bullets[i].onmouseover=function(){
+                    this.click();
+                };
+            }
+        </script>
+    <% } %>
+    <div class="archive-list w-full">
+        <ul class="archive index-archive">
+            <% for(var j = 0; j < postsList.length; j++) { %>
+              <% var thisPost = postsList[j] %>
+              <li>
+                <span class="archive-date"><%= date(thisPost.date, "YYYY/MM/DD") %></span>
+                <div class="archive-main">
+                  <% if(thisPost.categories.length > 0) { %>
+                    <a class="archive-category"  href="/<%= thisPost.categories.data[0].path %>">
+                      [<%= thisPost.categories.data[0].name %>]
+                    </a> 
+                  <% } %>
+                    <a class="archive-title" href="<%- url_for(thisPost.path) %>"><%= thisPost.title %></a>
+                </div>
+              </li>
+            <% } %>
+        </ul>
+    </div>
+
+</div>

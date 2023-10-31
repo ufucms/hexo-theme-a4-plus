@@ -1,0 +1,34 @@
+{
+  "name": "hexo-theme-a4",
+  "version": "1.7.1",
+  "private": false,
+  "description": "A hexo theme that looks like an A4 paper.",
+  "scripts": {
+    "npm:publish": "npm publish",
+    "format": "prettier --write ./source/js/*.js ./scripts ",
+    "lint:style": "stylelint --fix ./source/css",
+    "git:push": "git push --tag && git push -u origin dev",
+    "git:add": "npm run lint:style && git add ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HiNinojay/hexo-theme-A4.git"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "A4",
+    "simple",
+    "pure",
+    "powerful",
+    "hexo-theme",
+    "blog"
+  ],
+  "author": "Nino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HiNinojay/hexo-theme-A4/issues"
+  },
+  "homepage": "https://github.com/HiNinojay/hexo-theme-A4#readme",
+  "main": "_config.yml"
+}

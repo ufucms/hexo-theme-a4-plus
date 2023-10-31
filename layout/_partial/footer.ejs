@@ -1,0 +1,68 @@
+<div class="footer">
+    <div class="copyright flex justify-between"> 
+        <div class="flex items-center"> 
+            <span> 
+                <%
+                    const linkRegex = /\[(.*?)\]\((.*?)\)/g;
+                    const copyRightText = theme.footerLink.info.replace(linkRegex, '<a target="_blank" href="$2">$1</a>');
+                %>
+                <%- copyRightText %>
+
+                <% for (name in theme.footerLink) { %>
+                    <% if(name != 'info') { %>
+                        / <a href="<%- url_for(theme.footerLink[name]) %>"> <%= name %> </a>
+                    <% } %>
+                <% } %>
+            </span>
+        </div>
+        <div class="showTime flex items-center"> 
+            <i class="flex items-center"><span id="currentTime" class="fz-075">当前时间：<%= new Date().toLocaleString() %></span></i>
+        </div>
+    </div>
+    <!--这是指一条线往下的内容-->
+    <div class="footer-last">
+        <div class="flex items-center"> 
+            <span><%= theme.post.footer %></span>
+        </div>
+        <div class="flex items-center"> 
+            <% if(theme.post.themeInfo) { %>
+                <span class="footer-last-span-right"><i>本站由<a href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a href="https://github.com/ufucms/hexo-theme-a4-plus">hexo-theme-a4-plus</a>主题</i></span>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% if(theme.cdn.enable) { %>
+    <% if(theme.cdn.choose == "aliyun") { %>
+        <%- css('https://npm.elemecdn.com/hexo-theme-a4@latest/source/css/a11y-dark.min.css') %>
+        <%- js('https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/highlight.min.js') %>
+        <%- js('https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js') %>
+    <% } else if(theme.cdn.choose == "jsdelivr") { %>
+        <%- css('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/a11y-dark.min.css') %>
+        <%- js('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlight.min.js') %>
+        <%- js('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js') %>
+    <% } else if(theme.cdn.choose == "unpkg") { %>
+        <%- css('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/css/a11y-dark.min.css') %>
+        <%- js('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/js/highlight.min.js') %>
+        <%- js('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/js/highlightjs-line-numbers.js') %>
+    <% } %>
+<% } else { %>
+    <%- css('css/a11y-dark.min.css') %>
+    <%- js('js/highlight.min.js') %>
+    <%- js('js/highlightjs-line-numbers.js') %>
+<% } %>
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+
+    // 定义一个函数来更新当前时间的显示
+    function updateCurrentTime() {
+        var currentTimeElement = document.getElementById('currentTime');
+        var currentTime = new Date().toLocaleString();
+        currentTimeElement.innerHTML = '当前时间：' + currentTime;
+    }
+
+    // 使用定时器每秒钟更新一次当前时间的显示
+    setInterval(updateCurrentTime, 1000);
+</script>

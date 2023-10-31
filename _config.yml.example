@@ -1,0 +1,102 @@
+favicon: '/img/favicon.ico'
+
+menu:
+  首页: /  #需要hexo new page index,在index/index.md填写的内容将会展现在首页上
+  文章: /list/ # 需要hexo new page list
+  # 添加其他页面格式举例：
+  分类: /categories/ # 需要hexo new page categories
+  标签: /tags/ #需要hexo new page tags
+  关于: /about/ # 需要hexo new page about
+  # ...
+
+showInMenu:  # menu 中的哪些页面显示在首页中（“首页”必定显示）
+  - 文章  # 将在首页显示 文章 链接
+  - 分类
+  - 标签
+  - 关于
+
+siteBg: 
+  isSet: false #是否设置背景图片
+  bgSize: cover #背景图片的显示方式
+  bgColor: '#e4e4e4' #背景图片的底色
+  bgImage: /banner/bg.jpg #背景图片
+
+index:  # 首页的页眉页脚
+  titlePosition: center # center | left  # 首页标题的位置
+  postQuantity: 5 # 首页显示文章条数，置顶文章的4~8条
+  
+banner: #首页轮播图设置
+  swiper: true #是否开启轮播图
+  delay: 5000 # 轮播图切换时间
+  quantity: 3 # 轮播显示文章条数 置顶文章的1~3条
+
+footerLink: # 底部的链接自定义
+  info: © 2023 [三碗酒巷](https://bpxzs.com) 版权所有 # info这个单词不能修改，不想使用可为空
+  # 添加链接格式 举例
+  GitHub: https://github.com/ufucms # 超链接
+  友链: /friends/ # 需要hexo new page friends
+  联系: /contact/ # 需要hexo new page contact
+  支持: /support/ # 需要hexo new page support
+  # ...
+
+post: #除首页之外页面
+  footer: 🔥真金不怕红炉火，酒香不怕巷子深🍺   # 底部左侧 自定义信息
+  themeInfo: true # true | false  # 是否开启 底部右侧 声明本站信息
+
+# ---------------------------------------------------------------------------------------
+# 以上为基本配置，实现了A4主题追求的纯净风
+# 
+# 以下为 非必要不必更改的配置
+#
+# ps：还有经过A4作者测试，可供你使用的插件，详见：https://ninojay.top/tags/hexoPlugin/
+# ---------------------------------------------------------------------------------------
+
+# 你可能会用到的 https://ninojay.top/2023/website-cdn/
+cdn:
+  enable: false # 如果你修改了 css/js ，也许需要把cdn设置为false才会生效
+  choose: jsdelivr  # aliyun | unpkg| jsdelivr  # 都调整为利于国内的cdn，建议使用默认的 jsdelivr 即可
+  # 因为是免费CDN，所以有挂的风险，一旦发现网站样式出现原来没有的问题，请尝试关闭CDN
+
+# 实验性功能：A4色调调整：颜色搭配是很主观的行为
+# 设置为 false 为 A4 默认灰白色调，可设置为 true 直接启动 体验下 另一种绿金预置色调
+# 注：颜色代码需加“#”，颜色单词不需要加“#”
+# 更多A4色调搭配推荐：https://ninojay.top/hexoplugin/A4-color-change/
+color: 
+  enable: false # true | false 
+  font: "#fec591" # 字体颜色
+  background: "#005454" # 最底部层背景颜色
+  indexBackGround: "#005454" # 首页层颜色
+  postBackGround: "#005454" # 文章页层颜色
+  codeBackGround: "black" # 代码块背景颜色
+  codeFont: "white" # 代码块字体颜色 
+  linkBeforeClick: "#fec591" # 链接点击前的颜色
+  linkAfterClick: "#fec591" # 链接点击后的颜色
+
+# ---------------------------------------------------------------------------------------
+# Comment plugin
+# 评论插件：需要根据教程自行部署评论服务
+# ---------------------------------------------------------------------------------------
+comment:
+  enable: false 
+  use: waline # values: waline、twikoo、artalk
+
+  # Waline
+  # See: https://waline.js.org/guide/get-started.html
+  waline:
+    serverUrl:  # Waline server url(vercel) example: https://example.example.com
+    lang: zh-CN # Waline language, default: zh-CN. See: https://waline.js.org/guide/client/i18n.html
+
+  # Twikoo
+  # See: https://twikoo.js.org/quick-start.html
+  twikoo:
+    envId:  # 腾讯云环境填 envId；其它环境填地址
+    region:  # 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；其它环境不填
+    lang:  # 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+
+
+  # Artalk
+  # See: https://artalk.js.org/guide/deploy.html
+  artalk:
+    server:  # Artalk 后端地址
+
+version: v1.0.1

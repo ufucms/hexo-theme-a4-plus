@@ -1,0 +1,59 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="keywords" content="<% if(is_post()) { %><% var postTags = page.tags.data; %><% for(var j = 0; j < postTags.length; j++) { %><%= postTags[j].name %>,<% } } %><%= config.keywords %>" />
+    <meta name="description" content="<% if(is_post()) { %>本篇文章《<%= page.title %>》由<%= config.author %>于<%- date(page.date, "YYYY-MM-DD hh:mm:ss") %>发布，文章标签:<% var postTags = page.tags.data; %><% for(var j = 0; j < postTags.length; j++) { %><%= postTags[j].name %><% if(postTags.length > 1) { %><% if(j < (postTags.length - 1)) { %>、<% } else { %>，<% } %><% } else { %>，<% } %><% } %>归属<% var postCategories = page.categories.data; %><% for(var j = 0; j < postCategories.length; j++) { %><%= postCategories[j].name %><% if(postCategories.length > 1) { %><% if(j < (postCategories.length - 1)) { %>、<% } %><% } %><% break; %><% } %><% var wordCount = page.content.replace(/[^\x00-\xff]/g, 'aa').length; var readingTime = Math.ceil(page.content.length / 500); %><% if(wordCount > 0) { %>分类，共计<%= wordCount %>个字符，预计阅读时间<%= readingTime %>分钟。 <% } %><% } else { %><%= config.description %><% } %>" />
+    <meta name="hexo-theme-a4-plus" content="<%= theme.version %>" />
+    <link rel="alternate icon" type="image/webp" href="<%- url_for(theme.favicon) %>">
+    <title><% if(is_post()) { %><%= page.title %>_<% } %><% if(page.tag) { %><%= page.tag %>_<% } %><% if(page.category) { %><%= page.category %>_<% } %><% if(is_page()) { %><% var menuObj = Object.fromEntries(Object.entries(theme.menu).map(([key, value]) => [value, key])); %><%= menuObj[`/${page.title}/`] %>_<% } %><%= config.title + (config.subtitle ? ' | ' + config.subtitle : '') %></title>
+
+    <% if(theme.cdn.enable && theme.cdn.choose != "") { %>
+        <% if(theme.cdn.choose == "aliyun") { %>
+            <%- css('https://npm.elemecdn.com/hexo-theme-a4@latest/source/css/reset.css') %>
+            <%- css('https://npm.elemecdn.com/hexo-theme-a4@latest/source/css/markdown.css') %>
+            <%- css('https://npm.elemecdn.com/hexo-theme-a4@latest/source/css/fonts.css') %> 
+            <!--注意：首页既不是post也不是page-->
+            <% if((is_post() || is_page()) && theme.comment.enable && (!page.hasOwnProperty('comment') ||(page.hasOwnProperty('comment') && page.comment))) { %>
+                <%- css('https://npm.elemecdn.com/hexo-theme-a4@latest/source/css/waline.css') %>
+            <% } %>
+        <% } else if(theme.cdn.choose == "jsdelivr") { %>
+            <%- css('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/reset.css') %>
+            <%- css('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/markdown.css') %>
+            <%- css('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/fonts.css') %> 
+            <!--注意：首页既不是post也不是page-->
+            <% if((is_post() || is_page()) && theme.comment.enable && (!page.hasOwnProperty('comment') ||(page.hasOwnProperty('comment') && page.comment))) { %>
+                <%- css('https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/waline.css') %>
+            <% } %>
+        <% }  else if(theme.cdn.choose == "unpkg") { %>
+            <%- css('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/css/reset.css') %>
+            <%- css('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/css/markdown.css') %>
+            <%- css('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/css/fonts.css') %> 
+            <!--注意：首页既不是post也不是page-->
+            <% if((is_post() || is_page()) && theme.comment.enable && (!page.hasOwnProperty('comment') ||(page.hasOwnProperty('comment') && page.comment))) { %>
+                <%- css('https://npm.onmicrosoft.cn/hexo-theme-a4@latest/source/css/waline.css') %>
+            <% } %>
+        <% } %>
+    <% } else { %>
+        <%- css('css/reset.css') %>
+        <%- css('css/markdown.css') %>
+        <%- css('css/fonts.css') %> 
+         <!--注意：首页既不是post也不是page-->
+        <% if((is_post() || is_page()) && theme.comment.enable && (!page.hasOwnProperty('comment') ||(page.hasOwnProperty('comment') && page.comment))) { %>
+            <%- css('css/waline.css') %>
+        <% } %>
+    <% } %>
+    <% if(theme.banner.swiper) { %>
+    <%- css('css/swiper.min.css') %> 
+    <%- js('js/swiper.min.js') %>
+    <% } %>
+    <%- css('css/ui.css') %> 
+    <%- css('css/style.css') %>
+    <% if(theme.siteBg.isSet) { %>
+    <style>
+        .paper{
+            background: <%= theme.siteBg.bgColor %> url(<%= theme.siteBg.bgImage %>) no-repeat 100% 100%;
+            background-size: <%= theme.siteBg.bgSize %>;
+        }
+    </style>
+    <% } %>
+</head>

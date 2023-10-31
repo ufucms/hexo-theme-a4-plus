@@ -1,0 +1,31 @@
+<div class="header">
+    <div class="header-container">
+        <div class="header-content">
+            <a class="logo" href="<%- url_for() %>">💻<%= config.title %></a> 
+            <span class="description"><%= config.subtitle %></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        <% for (name in theme.menu) { %>
+            <% if(theme.menu[name].substring(1, theme.menu[name].length - 1) == path.substring(0, path.indexOf("/"))) { %>
+                <li><i>
+                    <% if(theme.color.enable) { %>
+                        <u>
+                            <a  href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
+                        </u>
+                    <% } else { %>
+                        <a style="color: #000000;" href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
+                    <% } %>
+                </i></li>
+            <%} else {%>
+                <% if(is_post() && !Object.values(theme.menu).includes(path) && theme.menu[name] === '/list/') { %>
+                    <li><a style="color: #000000;" href="<%- url_for(theme.menu[name]) %>"><%= name %></a></li>
+                <%} else {%>
+                    <li><a href="<%- url_for(theme.menu[name]) %>"><%= name %></a></li>
+                <% } %>
+            <% } %>
+        <% } %>
+    </ul>
+</div>
