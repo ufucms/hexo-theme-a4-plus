@@ -799,6 +799,9 @@ ul.index-archive{
 }
 /*小屏幕设备*/
 @media screen and (max-width: 480px) {
+    .post-md pre code {
+        white-space: break-spaces;
+    }
     .paper {
         padding: 0;
         height: calc(100vh);
@@ -810,7 +813,8 @@ ul.index-archive{
         box-shadow: none;
         animation: none;
     }
-    .post-main .archive li {
+    .post-main .archive li,
+    .paper-main .archive-list .archive li {
         display: inline;
     }
     .post-main .archive-list .archive-date{
@@ -824,6 +828,10 @@ ul.index-archive{
     .paper-main .post-main,
     .paper-main .archive-list{
         padding-bottom: 150px;
+    }
+    .index-main .footer,
+    .paper-main .footer{
+        padding: 18px 16px 0px;
     }
     .footer .copyright.flex,
     .footer .copyright .flex{
@@ -854,11 +862,21 @@ ul.index-archive{
     .footer-last-span-right {
         float: left; 
         font-size: 12px; 
+    }
+
+    .swiper-box, .swiper-box .h-full{
+        height: 230px;
+    }
+    .post-switch{
+        display: block;
     }
 
 }
 /*较小的屏幕或横向屏*/
 @media screen and (min-width: 481px) and (max-width: 560px) {
+    .post-md pre code {
+        white-space: break-spaces;
+    }
     .paper {
         padding: 0;
         height: calc(100vh);
@@ -870,12 +888,16 @@ ul.index-archive{
         box-shadow: none;
         animation: none;
     }
-    .post-main .archive li {
+    .post-main .archive li,
+    .paper-main .archive-list .archive li {
         display: inline;
     }
     .post-main .archive-list .archive-date{
         display: block;
         width: 140px !important;
+    }
+    .post-switch{
+        display: block;
     }
 
     .index-main .post-main .archive-list{
@@ -884,6 +906,10 @@ ul.index-archive{
     .paper-main .post-main,
     .paper-main .archive-list{
         padding-bottom: 150px;
+    }
+    .index-main .footer,
+    .paper-main .footer{
+        padding: 18px 16px 0px;
     }
     .footer .copyright.flex,
     .footer .copyright .flex{
@@ -914,6 +940,13 @@ ul.index-archive{
     .footer-last-span-right {
         float: left; 
         font-size: 12px; 
+    }
+
+    .swiper-box, .swiper-box .h-full{
+        height: 280px;
+    }
+    .post-switch{
+        display: block;
     }
 }
 /*中等大小的屏幕，小型平板或者横向屏*/
@@ -929,7 +962,8 @@ ul.index-archive{
         box-shadow: none;
         animation: none;
     }
-    .post-main .archive li {
+    .post-main .archive li,
+    .paper-main .archive-list .archive li {
         display: inline;
     }
     .post-main .archive-list .archive-date{
@@ -944,6 +978,10 @@ ul.index-archive{
     .paper-main .archive-list{
         padding-bottom: 150px;
     }
+    .index-main .footer,
+    .paper-main .footer{
+        padding: 18px 16px 0px;
+    }
     .footer .copyright{
         justify-content: center;
     }
@@ -953,6 +991,13 @@ ul.index-archive{
     .footer .footer-last {
         padding-top: 5px;
         flex-direction: column;
+    }
+
+    .swiper-box, .swiper-box .h-full{
+        height: 300px;
+    }
+    .post-switch{
+        display: block;
     }
 }
 @media screen and (min-width: 600px) and (max-width: 699px) {
@@ -967,9 +1012,10 @@ ul.index-archive{
         box-shadow: none;
         animation: none;
     }
-    .post-main .archive li {
+    /*.post-main .archive li,
+    .paper-main .archive-list .archive li {
         display: inline;
-    }
+    }*/
     .post-main .archive-list .archive-date{
         display: block;
         width: 140px !important;
@@ -982,10 +1028,23 @@ ul.index-archive{
     .paper-main .archive-list{
         padding-bottom: 150px;
     }
+    .index-main .footer,
+    .paper-main .footer{
+        padding: 18px 16px 0px;
+    }
+
+    .swiper-box, .swiper-box .h-full{
+        height: 330px;
+    }
+    .post-switch{
+        display: block;
+    }
 }
 /*较大的屏幕，平板电脑和桌面显示器*/
-@media screen and (min-width: 768px) {
-
+@media screen and (min-width: 700px) and (max-width: 890px) {
+    .post-switch{
+        display: block;
+    }
 }
 
 @media print {
