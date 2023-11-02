@@ -3,12 +3,13 @@
       <% var array = eval('site.posts.data') %>
 
       <% array.sort((a, b) => {
-          if(a.top && b.top){
-              return b.date - a.date;
+        if (a.top && b.top) {
+          if(!(Number(a.top) - Number(b.top))){
+            return b.date - a.date;
           }
-          return b.top - a.top;
-        }) 
-      %>
+        }
+        return b.top - a.top; // 默认按照 top 属性进行排序
+      }) %>
       
       <% class HashMap {
         constructor() {
@@ -96,7 +97,7 @@
         <% for(var j = 0; j < thisYearPostList.size(); j++) { %>
           <% var thisPost = thisYearPostList.get(j) %>
           <li>
-            <span class="archive-date"><%= date(thisPost.date, "MM/DD hh:mm:ss") %> 
+            <span class="archive-date"><%= date(thisPost.date, "MM/DD HH:mm:ss") %> 
             </span>
             <div class="archive-main <% if(thisPost.top) { %>archive-top<% } %>">
               <% if(thisPost.categories.length > 0) { %>
@@ -104,7 +105,7 @@
                   [<%= thisPost.categories.data[0].name %>]
                 </a> 
               <% } %>
-                <a class="archive-title" href="<%- url_for(thisPost.path) %>"><%= thisPost.title %></a>
+              <a class="archive-title" href="<%- url_for(thisPost.path) %>"><%= thisPost.title %></a>
             </div>
           </li>
         <% } %>

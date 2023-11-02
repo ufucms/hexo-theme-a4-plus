@@ -25,8 +25,13 @@
   <% for (let i = 0; i < array.length; i++) { %>
     <% if (!('hide' in array[i]) || array[i].hide == false) {%>
         <li>
-          <span class="archive-date"><%= date(array[i].date, "YYYY/MM/DD") %></span>
+          <span class="archive-date"><%= date(array[i].date, "YYYY/MM/DD HH:mm") %></span>
           <div class="archive-main">
+              <% if(array[i].categories.length > 0) { %>
+                <a class="archive-category"  href="/<%= array[i].categories.data[0].path %>">
+                  [<%= array[i].categories.data[0].name %>]
+                </a> 
+              <% } %>
               <a class="archive-title" href="<%- url_for(array[i].path) %>"><%= array[i].title %></a>
           </div>
         </li>

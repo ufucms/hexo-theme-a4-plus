@@ -6,17 +6,18 @@
                     const linkRegex = /\[(.*?)\]\((.*?)\)/g;
                     const copyRightText = theme.footerLink.info.replace(linkRegex, '<a target="_blank" href="$2">$1</a>');
                 %>
-                <%- copyRightText %>
-
+                <%- copyRightText %> &nbsp;
+            </span>
+            <span class="links">
                 <% for (name in theme.footerLink) { %>
                     <% if(name != 'info') { %>
-                        / <a href="<%- url_for(theme.footerLink[name]) %>"> <%= name %> </a>
+                       <i class="hidden-box"> / </i><a class="link" href="<%- url_for(theme.footerLink[name]) %>"> &nbsp;<%= name %>&nbsp; </a>
                     <% } %>
                 <% } %>
             </span>
         </div>
         <div class="showTime flex items-center"> 
-            <i class="flex items-center"><span id="currentTime" class="fz-075">当前时间：<%= new Date().toLocaleString() %></span></i>
+            <i class="time-box flex items-center"><span id="currentTime" class="fz-075 flex items-center">当前时间：<%= new Date().toLocaleString() %></span></i>
         </div>
     </div>
     <!--这是指一条线往下的内容-->

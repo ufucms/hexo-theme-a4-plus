@@ -1,7 +1,7 @@
 <div class="post-main">
-    <% var topListArr = []; var array = eval('site.posts.data'); %>
-    <% array.sort((a, b) => {
-        if (a.top === b.top) {
+    <% var topListArr = []; var postArray = eval('site.posts.data'); %>
+    <% postArray.sort((a, b) => {
+        if (a.top && b.top) {
             if (a.cover && !b.cover) {
                 return -1; // a.cover 为真而 b.cover 为假，a 排在 b 前面
             } else if (!a.cover && b.cover) {
@@ -11,11 +11,10 @@
             }
         }
         return b.top - a.top; // 默认按照 top 属性进行排序
-    }); 
-    %>
-    <% for (let i = 0; i < array.length; i++) {
-        if((!('hide' in array[i]) || array[i].hide == false) && array[i].top){
-          topListArr.push(array[i]);
+    }) %>
+    <% for (let i = 0; i < postArray.length; i++) {
+        if((!('hide' in postArray[i]) || postArray[i].hide == false) && postArray[i].top){
+          topListArr.push(postArray[i]);
         }
     } %>
 
@@ -78,7 +77,7 @@
             <% for(var j = 0; j < postsList.length; j++) { %>
               <% var thisPost = postsList[j] %>
               <li>
-                <span class="archive-date"><%= date(thisPost.date, "YYYY/MM/DD") %></span>
+                <span class="archive-date"><%= date(thisPost.date, "YYYY/MM/DD HH:mm") %></span>
                 <div class="archive-main">
                   <% if(thisPost.categories.length > 0) { %>
                     <a class="archive-category"  href="/<%= thisPost.categories.data[0].path %>">

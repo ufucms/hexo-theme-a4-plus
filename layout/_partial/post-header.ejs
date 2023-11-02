@@ -10,7 +10,7 @@
     <ul class="nav">
         <% for (name in theme.menu) { %>
             <% if(theme.menu[name].substring(1, theme.menu[name].length - 1) == path.substring(0, path.indexOf("/"))) { %>
-                <li><i>
+                <li>
                     <% if(theme.color.enable) { %>
                         <u>
                             <a  href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
@@ -18,7 +18,7 @@
                     <% } else { %>
                         <a style="color: #000000;" href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
                     <% } %>
-                </i></li>
+                </li>
             <%} else {%>
                 <% if(is_post() && !Object.values(theme.menu).includes(path) && theme.menu[name] === '/list/') { %>
                     <li><a style="color: #000000;" href="<%- url_for(theme.menu[name]) %>"><%= name %></a></li>

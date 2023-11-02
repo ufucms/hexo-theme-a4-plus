@@ -37,7 +37,7 @@
                     <span> <%= config.author %></span>
                 <% } %>
             </span>
-            <span>于<%- date(page.date, "YYYY-MM-DD hh:mm:ss") %>发布</span>
+            <span>于<%- date(page.date, "YYYY-MM-DD HH:mm:ss") %>发布</span>
             <%
               var wordCount = page.content.replace(/[^\x00-\xff]/g, 'aa').length;
             %>
@@ -102,17 +102,17 @@
     <% if(is_post()) { %>
         <div class="post-switch w-full flex justify-between">
             <div class="flex items-center">
-                <span class="post-switch-lable">⨇上一篇： </span>
+                <span class="post-switch-lable">⨇上篇： </span>
                 <% if (page.prev) { %>
-                    <a href="<%- url_for(page.prev.path) %>"><%- page.prev.title %></a>
+                    <a class="post-max-title" href="<%- url_for(page.prev.path) %>"><%- page.prev.title %></a>
                 <% } else { %>
                     没有了
                 <% } %>
             </div>
             <div class="flex items-center">
-                <span class="post-switch-lable">⨈下一篇： </span>
+                <span class="post-switch-lable">⨈下篇： </span>
                 <% if (page.next) { %>
-                    <a href="<%- url_for(page.next.path) %>"><%- page.next.title %></a>
+                    <a class="post-max-title" href="<%- url_for(page.next.path) %>"><%- page.next.title %></a>
                 <% } else { %>
                     没有了
                 <% } %>
