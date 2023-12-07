@@ -836,6 +836,7 @@ ul.index-archive{
     .footer .copyright.flex,
     .footer .copyright .flex{
         display: block;
+        text-align: center;
     }
     .footer .copyright span{
         display: block;
@@ -914,6 +915,7 @@ ul.index-archive{
     .footer .copyright.flex,
     .footer .copyright .flex{
         display: block;
+        text-align: center;
     }
     .footer .copyright span{
         display: block;
@@ -982,11 +984,8 @@ ul.index-archive{
     .paper-main .footer{
         padding: 18px 16px 0px;
     }
-    .footer .copyright{
-        justify-content: center;
-    }
-    .footer .showTime{
-        display: none;
+    .footer .showTime.siteicp{
+        display: block;
     }
     .footer .footer-last {
         padding-top: 5px;

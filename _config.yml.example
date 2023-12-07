@@ -1,4 +1,5 @@
 favicon: '/img/favicon.ico'
+siteIcon: 💻
 
 menu:
   首页: /  #需要hexo new page index,在index/index.md填写的内容将会展现在首页上
@@ -38,6 +39,8 @@ footerLink: # 底部的链接自定义
   联系: /contact/ # 需要hexo new page contact
   支持: /support/ # 需要hexo new page support
   # ...
+
+siteIcp:  # 备案号
 
 post: #除首页之外页面
   footer: 🔥真金不怕红炉火，酒香不怕巷子深🍺   # 底部左侧 自定义信息

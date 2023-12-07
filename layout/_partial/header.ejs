@@ -10,7 +10,7 @@
 <% } else if(theme.index.titlePosition == "center") { %>
     <div style="text-align: center;"> 
 <% } %>
-        <a class="index-logo" href="<%- url_for() %>">💻<%= config.title %></a>
+        <a class="index-logo" href="<%- url_for() %>"><%= theme.siteIcon %><%= config.title %></a>
         <div style="margin-bottom: 12px;"> 
             首页
             <% for (name in theme.menu) { %>

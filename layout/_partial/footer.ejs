@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="copyright flex justify-between"> 
-        <div class="flex items-center"> 
+        <div class="flex"> 
             <span> 
                 <%
                     const linkRegex = /\[(.*?)\]\((.*?)\)/g;
@@ -16,8 +16,12 @@
                 <% } %>
             </span>
         </div>
-        <div class="showTime flex items-center"> 
-            <i class="time-box flex items-center"><span id="currentTime" class="fz-075 flex items-center">当前时间：<%= new Date().toLocaleString() %></span></i>
+        <div class="showTime flex items-center <% if(theme.siteIcp) { %>siteicp<% } else { %><% } %>"> 
+            <% if(theme.siteIcp) { %>
+                <a class="" taget="_blank" href="https://beian.miit.gov.cn/"><%= theme.siteIcp %></a>
+            <% } else { %>
+                <i class="time-box flex items-center"><span id="currentTime" class="fz-075 flex items-center">当前时间：<%= new Date().toLocaleString() %></span></i>
+            <% } %>
         </div>
     </div>
     <!--这是指一条线往下的内容-->
