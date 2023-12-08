@@ -15,7 +15,7 @@
 ### Git 安装
 
 - 执行命令：`git clone https://github.com/ufucms/hexo-theme-a4-plus.git themes/a4-plus`
-- 将`themes/a4-plus/_config.yml.example` 文件复制到`website`文件夹路径下并重命名为`_config.a4-plus.yml`。
+- 将`themes/a4-plus/_config.a4-plus.yml.example` 文件复制到`website`文件夹路径下并重命名为`_config.a4-plus.yml`。
 - 对主题的所有个性化配置都将在`_config.a4-plus.yml`文件中进行，可按照文件中的注释自行配置修改
 - 执行命令：`hexo s` 运行项目查看效果
 

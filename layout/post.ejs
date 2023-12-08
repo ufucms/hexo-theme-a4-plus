@@ -139,7 +139,7 @@
 
         var clipboard = new ClipboardJS('.post-main pre', {
             target: function(trigger) {
-                return trigger.querySelector('.hljs') || trigger.querySelector('.language-none');
+                return trigger.querySelector('.hljs') || trigger.querySelector('.language-none') || trigger.querySelector('.line');
             }
         });
 

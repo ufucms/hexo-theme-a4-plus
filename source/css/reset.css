@@ -60,6 +60,9 @@ select
 {
     font: inherit;
 }
+figure.highlight table{
+    width: 100%;
+}
 
 @media (prefers-reduced-motion: reduce)
 {
