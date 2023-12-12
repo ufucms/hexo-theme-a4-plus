@@ -50,10 +50,13 @@
     <%- css('css/style.css') %>
     <% if(theme.siteBg.isSet) { %>
     <style>
-        .paper{
-            background: <%= theme.siteBg.bgColor %> url(<%= theme.siteBg.bgImage %>) no-repeat 100% 100%;
-            background-size: <%= theme.siteBg.bgSize %>;
-        }
+        <% if(theme.siteBg.isSet) { %>
+            .paper{
+                background: <%= theme.siteBg.bgColor %> url(<%= theme.siteBg.bgImage %>) no-repeat 100% top;
+                background-size: <%= theme.siteBg.bgSize %>;
+                background-attachment: fixed;
+            }
+        <% } %>
     </style>
     <% } %>
 </head>
