@@ -16,6 +16,8 @@ showInMenu:  # menu 中的哪些页面显示在首页中（“首页”必定显
   - 标签
   - 关于
 
+openSiteGrayscale: false #开启整站灰色滤镜(重大事件默哀活动)
+
 siteBg: 
   isSet: false #是否设置背景图片
   bgSize: cover #背景图片的显示方式

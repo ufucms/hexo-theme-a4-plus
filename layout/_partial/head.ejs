@@ -48,8 +48,19 @@
     <% } %>
     <%- css('css/ui.css') %> 
     <%- css('css/style.css') %>
-    <% if(theme.siteBg.isSet) { %>
     <style>
+        <% if(theme.openSiteGrayscale) { %>
+            html {
+                filter: gray !important;
+                filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+                -moz-filter: grayscale(100%);
+                -ms-filter: grayscale(100%);
+                -o-filter: grayscale(100%);
+            }
+            body{ filter:gray; }
+        <% } %>
         <% if(theme.siteBg.isSet) { %>
             .paper{
                 background: <%= theme.siteBg.bgColor %> url(<%= theme.siteBg.bgImage %>) no-repeat 100% top;
@@ -58,5 +69,12 @@
             }
         <% } %>
     </style>
+    <% if(theme.openSiteGrayscale) { %>
+        <%- js('js/grayscale.js') %>
+        <script>
+            window.onload=function(){
+                grayscale(document.body);
+            }
+        </script>
     <% } %>
 </head>
