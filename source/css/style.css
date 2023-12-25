@@ -646,7 +646,7 @@ ul.index-archive{
 }
 .post-switch .post-switch-lable {
     color: var(--font-color-2);
-    min-width: 85px;
+    min-width: 70px;
 }
 /* list页面 标签访问过后的颜色 */
 .archive-main a:link { 
